@@ -323,8 +323,11 @@ void parallelNucleationList<dim>::resolveNucleationConflicts (double min_dist_be
 				std::cout << "Conflict between nuclei! Distance is: " << newnuclei[nuc_index].center.distance(newnuclei[prev_nuc_index].center)
 						<< " Conflict removed."<< std::endl;
 				break;
-			} else if(newnuclei[nuc_index].orderParameterIndex == newnuclei[prev_nuc_index].orderParameterIndex && newnuclei[nuc_index].center.distance(newnuclei[prev_nuc_index].center) < min_dist_between_OP){ // This section makes sure two nuclei with same order parameter are located further apart to avoid any coalesence during growth
-
+		    } 
+		    // This section makes sure two nuclei with same order parameter are located further apart to avoid any coalesence during growth
+		    // min_dist_between_OP should be initilized from the input file
+	    else if(newnuclei[nuc_index].orderParameterIndex == newnuclei[prev_nuc_index].orderParameterIndex && newnuclei[nuc_index].center.distance(newnuclei[prev_nuc_index].center) < min_dist_between_OP){ 
+		    
 			    	isClose = true;
 				std::cout << "Conflict between nuclei! Distance is: " << newnuclei[nuc_index].center.distance(newnuclei[prev_nuc_index].center)
 						<< " Conflict removed."<< std::endl;
